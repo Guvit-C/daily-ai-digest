@@ -3,7 +3,7 @@
 Daily Digest — Phase 1 & 1B Scraping (Clone)
 
 Fetches:
-  1. YouTube competitor latest videos (Nateherk, Nick Saraev)
+  1. YouTube competitor latest videos (Nateherk, Nick Saraev, Chase H AI)
   2. GitHub trending AI repos (weekly)
   3. X (Twitter) posts from key AI accounts
 
@@ -52,7 +52,8 @@ POSTS_PER_ACCOUNT = 3
 
 COMPETITORS = [
     {"name": "Nateherk", "query": "Nateherk AI automation"},
-    {"name": "Nick Saraev", "query": "Nick Saraev agentic workflow"}
+    {"name": "Nick Saraev", "query": "Nick Saraev agentic workflow"},
+    {"name": "Chase H AI", "query": "Chase H AI"}
 ]
 
 
