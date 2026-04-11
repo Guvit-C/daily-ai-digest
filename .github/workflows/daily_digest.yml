@@ -1,0 +1,51 @@
+name: Daily AI Trends Digest
+
+on:
+  schedule:
+    # Run every day at 9 AM UTC (you can adjust the time)
+    - cron: '0 9 * * *'
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  daily-digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: daily_digest
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run data collection (Phase 1 & 1B)
+        working-directory: daily_digest
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APIFY_API_KEY: ${{ secrets.APIFY_API_KEY }}
+        run: python scrape.py
+
+      - name: Analyze with GPT-4o and send email
+        working-directory: daily_digest
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python analyze_and_email.py
+
+      - name: Upload signals as artifact (for debugging)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: daily-digest-signals
+          path: daily_digest/daily_digest_signals.json
+          retention-days: 7

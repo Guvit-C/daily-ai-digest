@@ -1,0 +1,18 @@
+# Environment variables (keep secrets local)
+.env
+.env.local
+
+# Debug/temp files
+gpt4o_response.txt
+gpt4o_full_response.txt
+daily_digest_signals.json
+*.pyc
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
