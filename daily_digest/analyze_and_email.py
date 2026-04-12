@@ -104,7 +104,9 @@ def analyze_with_gpt4o(signals_data):
 
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://github.com/Guvit-C/daily-ai-digest",
+        "X-Title": "Daily AI Digest"
     }
 
     try:
