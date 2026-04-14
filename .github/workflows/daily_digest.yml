@@ -1,4 +1,4 @@
-name: Daily AI Trends Digest
+name: Daily AI Digest
 
 on:
   schedule:
@@ -26,15 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run data collection (Phase 1 & 1B)
+      - name: Collect signals (RSS, GitHub, X, Reddit)
         working-directory: daily_digest
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APIFY_API_KEY: ${{ secrets.APIFY_API_KEY }}
         run: python scrape.py
 
-      - name: Analyze with GPT-4o and send email
+      - name: Analyze with Gemini 2.5 Flash and send email
         working-directory: daily_digest
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

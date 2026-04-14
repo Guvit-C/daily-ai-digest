@@ -1,6 +1,4 @@
 python-dotenv==1.0.0
 requests==2.31.0
-google-auth==2.25.2
-google-api-python-client==1.12.5
-youtube-transcript-api==0.6.1
 beautifulsoup4==4.12.2
+feedparser==6.0.11
