@@ -3,8 +3,8 @@
 .env.local
 
 # Debug/temp files
-gpt4o_response.txt
-gpt4o_full_response.txt
+gemini_response.txt
+gemini_full_response.txt
 daily_digest_signals.json
 *.pyc
 __pycache__/

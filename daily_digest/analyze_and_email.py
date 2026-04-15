@@ -387,9 +387,11 @@ def generate_html_email(analysis, signals=None):
         <div style="background:#f8f9fa;border-left:4px solid #0066cc;padding:20px;margin-bottom:20px;border-radius:4px;">
 
             <!-- Title row with ROI badge -->
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-                <h3 style="margin:0;color:#0066cc;font-size:16px;font-weight:600;">{i}. {trend.get('title','')}</h3>
-                <span style="background:{roi_color};color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;letter-spacing:0.5px;">{roi_label}</span>
+            <div style="margin-bottom:10px;">
+                <h3 style="margin:0;color:#0066cc;font-size:16px;font-weight:600;line-height:1.4;">
+                    {i}. {trend.get('title','')}
+                    <span style="display:inline-block;vertical-align:middle;background:{roi_color};color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:12px;white-space:nowrap;letter-spacing:0.5px;margin-left:8px;line-height:1.2;">{roi_label}</span>
+                </h3>
             </div>
 
             <!-- Gold score -->
